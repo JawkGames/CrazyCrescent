@@ -1,8 +1,7 @@
 name: Android AAB
 
 on:
-  push:
-    branches: [main]
+  # sadece elle: Actions > Android AAB > Run workflow (kullanici 'tamam' deyince)
   workflow_dispatch:
 
 jobs:
@@ -24,7 +23,7 @@ jobs:
         run: |
           SURUM=$(grep -o "SURUM='[^']*'" www/index.html | sed "s/SURUM='//;s/'//")
           echo "SURUM_AD=${SURUM#v}" >> $GITHUB_ENV
-          echo "SURUM_KODU=${{ github.run_number }}" >> $GITHUB_ENV
+          echo "SURUM_KODU=$(( ${{ vars.SURUM_TABAN || 0 }} + ${{ github.run_number }} ))" >> $GITHUB_ENV
 
       - name: Imza anahtari
         env:
