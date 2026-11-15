@@ -5,6 +5,10 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 ## Kontroller
 - Dokunmatik: sol altta ◀ ▶, ekranın sağ yarısı zıplama
 - Klavye: ok tuşları / A-D, boşluk ile zıplama
+- Ekran butonları PC'de de görünür
+- Sağ üstte, canların altında tam ekran butonu (oyunu yatay kilitler)
+- Altta 50 px banner reklam alanı ayrıldı
+- Her bölüm geçişinde +1 can (en fazla 9), can sonraki bölüme taşınır
 - Sol üstteki güneşe dokunmak sonraki bölüme atlar (inceleme için)
 
 ## Bulutlar
@@ -29,7 +33,13 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 | Mercan | Binince ok yönünde uçar |
 | Nane | Yukarı üfler |
 | Lacivert | Her zıplayışta var / yok olur |
+| Limon | Sağa sola kayar |
+| Fuşya | Üstünde durdukça küçülür, kaybolur |
+| Şeftali | Basınca düşer |
+| Çivit | Daire çizerek döner |
+| Gül | Buradan zıplayınca çok yükselirsin |
+| Deniz | Dalga gibi iner çıkar |
 | Gökkuşağı bulutu | Bölüm sonu |
 
 ## Bölümler
-1 Sabah · 2 Öğle · 3 İkindi · 4 Gün Batımı · 5 Alacakaranlık
+1 Sabah · 2 Öğle · 3 İkindi · 4 Gün Batımı · 5 Alacakaranlık · 6 Şafak · 7 Kiraz Bahçesi (yaprak yağar) · 8 Kar Diyarı (kar yağar) · 9 Yıldızlı Gece · 10 Kuzey Işıkları
