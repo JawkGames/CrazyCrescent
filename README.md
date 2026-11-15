@@ -2,6 +2,10 @@
 
 Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan platform oyunu. Oyun tek dosya: `www/index.html` (sürüm `SURUM`), tüm görseller kodla çiziliyor. Android: Capacitor + AdMob, paket `air.CrazyCrescent` (eski AIR oyununun güncellemesi). AAB sadece elle üretilir: Actions → Android AAB → Run workflow. İmza: secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`; sürüm kodu = 2003000 + çalıştırma no. (Play deki en yüksek kod 2002000)
 
+## Dil, kapak
+- Türkçe / İngilizce: telefon dili Türkçe ise TR, değilse EN; kapakta TR ⇄ EN butonu (seçim kaydedilir)
+- Kapak görseli `www/img/kapak.jpg`; yüklenirken soldan sağa açılır, sonra 'Dokun ve başla'
+
 ## Kontroller
 - Dokunmatik: sol altta ◀ ▶, ekranın sağ yarısı zıplama
 - Klavye: ok tuşları / A-D, boşluk ile zıplama
