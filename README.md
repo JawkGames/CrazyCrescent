@@ -8,7 +8,7 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 - Ekran butonları PC'de de görünür
 - Sağ üstte, canların altında tam ekran butonu (oyunu yatay kilitler)
 - Altta 50 px banner reklam alanı ayrıldı
-- Can = ay. Denize düşmek 1 ay, şimşek yarım ay götürür; bölüm geçince +1 ay (en fazla 9), canlar sonraki bölüme taşınır
+- Can = ay. Denize düşmek 1 ay, şimşek yarım ay götürür; bölüm geçince +1 ay (en fazla 5), canlar sonraki bölüme taşınır
 - Canlar bitince: ödüllü reklam izle → aynı bölümden 3 canla devam; izlemezsen 1. bölümden baştan
 - Sol üstteki güneşe dokunmak sonraki bölüme atlar (sadece tarayıcı testinde, uygulamada kapalı)
 
@@ -22,11 +22,11 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 | Kırmızı | 3 kat yukarı sıçrar, sonra en alttan başlar |
 | Kahverengi | Zıplatır |
 | Turuncu | İki kol ortadan açılır, düşersin |
-| Sarı | Tek kanatlı pervane gibi döner |
+| Sarı | İki kanatlı pervane gibi döner, kanatlara her açıda basılır |
 | Turkuaz | Asansör |
 | Pembe | Basınca erir, sonra geri gelir |
 | Mor | İkizine ışınlar |
-| Gri | Rüzgârı sürükler |
+| Gri | Rüzgârı alt ortasından çıkar, sürükler |
 | Buz mavisi | Kaygan |
 | Lila | Sarkaç gibi sallanır |
 | Altın | +1 can |
