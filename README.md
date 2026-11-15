@@ -1,6 +1,6 @@
 # Crazy Crescent
 
-Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan platform oyunu. Oyun tek dosya: `www/index.html` (sürüm `SURUM`), tüm görseller kodla çiziliyor. Android: Capacitor + AdMob, paket `air.CrazyCrescent` (eski AIR oyununun güncellemesi). AAB sadece elle üretilir: Actions → Android AAB → Run workflow. İmza: secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`; sürüm kodu = `vars.SURUM_TABAN` + çalıştırma no.
+Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan platform oyunu. Oyun tek dosya: `www/index.html` (sürüm `SURUM`), tüm görseller kodla çiziliyor. Android: Capacitor + AdMob, paket `air.CrazyCrescent` (eski AIR oyununun güncellemesi). AAB sadece elle üretilir: Actions → Android AAB → Run workflow. İmza: secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`; sürüm kodu = 2003000 + çalıştırma no. (Play deki en yüksek kod 2002000)
 
 ## Kontroller
 - Dokunmatik: sol altta ◀ ▶, ekranın sağ yarısı zıplama
