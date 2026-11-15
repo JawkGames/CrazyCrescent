@@ -47,7 +47,7 @@ jobs:
         run: |
           npm install
           npx cap add android
-          npx --yes @capacitor/assets generate --android --iconBackgroundColor '#8fd0fb' --iconBackgroundColorDark '#8fd0fb' --splashBackgroundColor '#8fd0fb' --splashBackgroundColorDark '#8fd0fb'
+          npx --yes @capacitor/assets generate --android --iconBackgroundColor '#9a8ee6' --iconBackgroundColorDark '#9a8ee6' --splashBackgroundColor '#9a8ee6' --splashBackgroundColorDark '#9a8ee6'
           python3 android-ayar/ayarla.py
           npx cap sync android
 
