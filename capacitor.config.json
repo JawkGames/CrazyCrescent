@@ -1,0 +1,9 @@
+{
+  "appId": "com.jawk.crazycrescent",
+  "appName": "Crazy Crescent",
+  "webDir": "www",
+  "backgroundColor": "#8fd0fb",
+  "android": {
+    "backgroundColor": "#8fd0fb"
+  }
+}

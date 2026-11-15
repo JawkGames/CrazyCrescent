@@ -1,6 +1,6 @@
 # Crazy Crescent
 
-Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan platform oyunu. Tek dosya (`index.html`), tüm görseller kodla çiziliyor.
+Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan platform oyunu. Oyun tek dosya: `www/index.html` (sürüm `SURUM`), tüm görseller kodla çiziliyor. Android: Capacitor + AdMob, `main`e her push'ta GitHub Actions AAB üretir (paket `com.jawk.crazycrescent`).
 
 ## Kontroller
 - Dokunmatik: sol altta ◀ ▶, ekranın sağ yarısı zıplama
@@ -8,8 +8,9 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 - Ekran butonları PC'de de görünür
 - Sağ üstte, canların altında tam ekran butonu (oyunu yatay kilitler)
 - Altta 50 px banner reklam alanı ayrıldı
-- Her bölüm geçişinde +1 can (en fazla 9), can sonraki bölüme taşınır
-- Sol üstteki güneşe dokunmak sonraki bölüme atlar (inceleme için)
+- Can = ay. Denize düşmek 1 ay, şimşek yarım ay götürür; bölüm geçince +1 ay (en fazla 9), canlar sonraki bölüme taşınır
+- Canlar bitince: ödüllü reklam izle → aynı bölümden 3 canla devam; izlemezsen 1. bölümden baştan
+- Sol üstteki güneşe dokunmak sonraki bölüme atlar (sadece tarayıcı testinde, uygulamada kapalı)
 
 ## Bulutlar
 | Renk | Davranış |
@@ -41,5 +42,12 @@ Hilal ile renkli bulutların üstünden zıplayarak gökkuşağına ulaşılan p
 | Deniz | Dalga gibi iner çıkar |
 | Gökkuşağı bulutu | Bölüm sonu |
 
+## Reklamlar (AdMob)
+- Banner: her zaman altta
+- Geçiş: her 5 bölümde bir
+- Ödüllü: canlar bitince devam etmek için
+- Açılış: sadece uygulamaya geri dönünce (ilk açılışta gösterilmez)
+
 ## Bölümler
+50 bölüm. 1-10 elle tasarlandı; 11-50 her biri bir öncekinden %5 daha uzun, hazır parçalardan seed ile üretilir, hızlar giderek artar. Temalar 10'da bir tekrar eder (Sabah II, III ...).
 1 Sabah · 2 Öğle · 3 İkindi · 4 Gün Batımı · 5 Alacakaranlık · 6 Şafak · 7 Kiraz Bahçesi (yaprak yağar) · 8 Kar Diyarı (kar yağar) · 9 Yıldızlı Gece · 10 Kuzey Işıkları
