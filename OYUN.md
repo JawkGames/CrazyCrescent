@@ -3,7 +3,7 @@
 Hilal (ay) ile renkli bulutların üstünden zıplayarak sol alttan sağ üste tırmanılan, bölüm bitirme odaklı mobil platform oyunu.
 Eski Google Play oyunu `air.CrazyCrescent`'in (Play'deki adı: "Maryo World (platform)") baştan yapılmış hâli.
 
-- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.5), her değişiklikte artırılır.
+- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.6), her değişiklikte artırılır.
 - Görseller kodla çizilir; sadece kapak `www/img/kapak.jpg` ve ikon/açılış `assets/` dışarıdan gelir.
 - Test: `https://raw.githack.com/cemrebaou/CrazyCrescent/<commit>/www/index.html`
 - Yatay oyun. Dokunmatik butonlar PC'de de görünür.
@@ -73,7 +73,7 @@ Tarayıcıda reklam yok; ödüllü butonu test için direkt devam ettirir.
 | Altın | `gold` | +1 can (bir kez) |
 | Krem | `beige` | Ağırlığınla çöker |
 | Mercan | `coral` | Binince ok yönünde uçar, sonra geri döner |
-| Nane | `mint` | Yukarı üfler, süzülürsün |
+| Nane | `mint` | Bulutun içinden yukarı yumuşak hava sütunu üfler, süzülürsün |
 | Lacivert | `navy` | Her zıplayışta var / yok olur (yerinde zıplayarak ayarlanır) |
 | Limon | `lime` | Sağa sola kayar |
 | Fuşya | `magenta` | Üstünde durdukça küçülür, kaybolur |
