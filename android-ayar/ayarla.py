@@ -63,4 +63,30 @@ if os.path.exists(vg):
     v = re.sub(r'compileSdkVersion\s*=\s*\d+', 'compileSdkVersion = 36', v)
     v = re.sub(r'targetSdkVersion\s*=\s*\d+', 'targetSdkVersion = 36', v)
     yaz(vg, v)
+# 5) Gercek tam ekran (immersive): saat/bildirim cubugu ve gezinme cubugu gizli, kaydirinca gecici gorunur
+for kok,_,dosyalar in os.walk('android/app/src/main/java'):
+    if 'MainActivity.java' in dosyalar:
+        ma=os.path.join(kok,'MainActivity.java')
+        paket=re.search(r'package\s+([\w.]+);',oku(ma)).group(1)
+        yaz(ma,"""package %s;
+
+import android.os.Bundle;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {
+    @Override public void onCreate(Bundle b) { super.onCreate(b); tamEkran(); }
+    @Override public void onResume() { super.onResume(); tamEkran(); }
+    @Override public void onWindowFocusChanged(boolean odak) { super.onWindowFocusChanged(odak); if (odak) tamEkran(); }
+    private void tamEkran() {
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        WindowInsetsControllerCompat c = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        c.hide(WindowInsetsCompat.Type.systemBars());
+        c.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+    }
+}
+""" % paket)
+        print('tam ekran:',ma)
 print('ayarlandi', kod, ad)

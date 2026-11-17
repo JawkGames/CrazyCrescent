@@ -3,7 +3,7 @@
 Hilal (ay) ile renkli bulutların üstünden zıplayarak sol alttan sağ üste tırmanılan, bölüm bitirme odaklı mobil platform oyunu.
 Eski Google Play oyunu `air.CrazyCrescent`'in (Play'deki adı: "Maryo World (platform)") baştan yapılmış hâli.
 
-- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.6), her değişiklikte artırılır.
+- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.7), her değişiklikte artırılır.
 - Görseller kodla çizilir; sadece kapak `www/img/kapak.jpg` ve ikon/açılış `assets/` dışarıdan gelir.
 - Test: `https://raw.githack.com/cemrebaou/CrazyCrescent/<commit>/www/index.html`
 - Yatay oyun. Dokunmatik butonlar PC'de de görünür.
@@ -99,4 +99,5 @@ Gökkuşağı başta ve sonda bulutun içinden tek noktadan çıkıp açılır.
 - İmza secret'ları: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` (Play'in beklediği SHA1 `88:71:61:AF:…:0D:D4:8C`).
 - Sürüm kodu = 2003000 + çalıştırma no (Play'deki en yüksek eski kod 2002000).
 - İkon ve açılış: `assets/` (kullanıcının verdiği hilal-gökkuşağı görseli), arka plan `#9a8ee6`.
-- `android-ayar/ayarla.py`: yatay ekran, tam ekran, AdMob kimliği, imza, sürüm, SDK 36.
+- `android-ayar/ayarla.py`: yatay ekran, gerçek tam ekran (MainActivity immersive: saat ve gezinme çubuğu gizli), AdMob kimliği, imza, sürüm, SDK 36.
+- Uygulamada tam ekran butonu gizli (sadece tarayıcıda görünür).
