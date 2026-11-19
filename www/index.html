@@ -7,7 +7,7 @@
 <style>
 html,body{margin:0;height:100%;overflow:hidden;background:#8fd0fb;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
 canvas{position:fixed;left:0;top:0;width:100%;display:block;touch-action:none}
-#ad{position:fixed;left:0;right:0;top:0;height:50px;background:#dff0ff}
+#ad{display:none}
 </style>
 </head>
 <body>
@@ -69,8 +69,8 @@ const REKLAM=(function(){
 (function(){
 const cv=document.getElementById('c'),g=cv.getContext('2d');
 const TAU=Math.PI*2,PI=Math.PI,G=1800,JUMP=720,RUN=260,STEP=1/120;
-const SURUM='v0.8';
-let ADH=50;
+const SURUM='v0.9';
+let ADH=0; // banner oyunun ustunde durur, oyun alani kuculmez
 const FONT='system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
 let W=1,H=1,DPR=1,SC=1,VW=1,VH=1,U=1,SPR=2,T=0;
 const sprC=new Map();
@@ -810,7 +810,7 @@ function frame(ts){
 resize();
 let sv=0,sl=3;try{sv=parseInt(localStorage.getItem('hilalLvl')||'0',10)||0;sl=parseFloat(localStorage.getItem('hilalCan')||'3')||3;}catch(e){}
 loadLevel(clamp(sv,0,LV.length-1),clamp(sl,.5,5));
-REKLAM.basla(function(h){ADH=h;resize();});
+REKLAM.basla(function(){});
 requestAnimationFrame(frame);
 })();
 </script>

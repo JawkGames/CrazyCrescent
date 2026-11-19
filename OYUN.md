@@ -3,7 +3,7 @@
 Hilal (ay) ile renkli bulutların üstünden zıplayarak sol alttan sağ üste tırmanılan, bölüm bitirme odaklı mobil platform oyunu.
 Eski Google Play oyunu `air.CrazyCrescent`'in (Play'deki adı: "Maryo World (platform)") baştan yapılmış hâli.
 
-- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.8), her değişiklikte artırılır.
+- Kod: tek dosya `www/index.html` (saf Canvas 2D, bağımlılık yok). Sürüm: dosyadaki `SURUM` (şu an v0.9), her değişiklikte artırılır.
 - Görseller kodla çizilir; sadece kapak `www/img/kapak.jpg` ve ikon/açılış `assets/` dışarıdan gelir.
 - Test: `https://raw.githack.com/cemrebaou/CrazyCrescent/<commit>/www/index.html`
 - Yatay oyun. Dokunmatik butonlar PC'de de görünür.
@@ -46,7 +46,7 @@ Eski Google Play oyunu `air.CrazyCrescent`'in (Play'deki adı: "Maryo World (pla
 | Tür | Ne zaman | Kimlik |
 |---|---|---|
 | Uygulama kimliği | — | `ca-app-pub-7983529419004158~2013724249` |
-| Banner | her zaman üstte, küçük standart banner 320×50 (oyun alanı banner'ın altından başlar) | `ca-app-pub-7983529419004158/4140166464` |
+| Banner | her zaman üstte ortada, küçük 320×50; oyunun **üstünde** durur, oyun alanı küçülmez (altında buton yok) | `ca-app-pub-7983529419004158/4140166464` |
 | Geçiş | her 5 bölümde bir, bölüm geçişinde | `ca-app-pub-7983529419004158/3254299313` |
 | Ödüllü | canlar bitince devam için | `ca-app-pub-7983529419004158/7541028686` |
 | Uygulama açılış | sadece arka plandan dönünce (ilk açılışta yok, en az 30 sn arayla) | `ca-app-pub-7983529419004158/9597501336` |
@@ -96,7 +96,9 @@ Gökkuşağı başta ve sonda bulutun içinden tek noktadan çıkıp açılır.
 ## Android / Play
 - **Bu bir telefon oyunu:** asıl ürün AAB (Google Play) + telefona kurulan APK; tarayıcı sürümü sadece test için.
 - **Tam ekran:** uygulama her zaman saat/pil/gezinme çubuğu gizli, kenarlarda boşluk olmadan tüm ekranı kaplar (MainActivity immersive + çentik modu ALWAYS + WebView kenar boşlukları sıfır; `capacitor.config.json`: `adjustMarginsForEdgeToEdge: disable`, `SystemBars.insetsHandling: disable, hidden: true`).
-- **AAB alırken (her seferinde, söylenmese de):** uygulamada tam ekran butonu olmaz (sadece tarayıcıda görünür); optimizasyon açık: R8 kod küçültme (`minifyEnabled true`) + kaynak küçültme (`shrinkResources true`), Capacitor/AdMob sınıfları `proguard-rules.pro` ile korunur; `mapping.txt` AAB ile birlikte artifact'e konur (Play Console → App bundle explorer → kod gizleme açma dosyası olarak yüklenir).
+- **AAB prosedürü:** önce sorun kontrolü (eksik/test reklam kimliği, imza, vb.). Sorun varsa AAB alınmaz: en üstte büyük "⚠ DİKKAT!!!" ile sorunlar listelenir, onay istenir, onaysız düzeltme yapılmaz. Sorun yoksa AAB alınır.
+- **AAB zipsiz verilir:** derleme, `.aab` ve `mapping.txt` dosyalarını GitHub Release olarak yayınlar; kullanıcıya Release'deki `.aab` dosyasının doğrudan indirme linki verilir.
+- **AAB alırken (her seferinde, söylenmese de):** PC/tarayıcıya özel şeyler (tam ekran butonu, güneşle bölüm atlama) uygulamada kapalı; uygulamada tam ekran butonu olmaz (sadece tarayıcıda görünür); optimizasyon açık: R8 kod küçültme (`minifyEnabled true`) + kaynak küçültme (`shrinkResources true`), Capacitor/AdMob sınıfları `proguard-rules.pro` ile korunur; `mapping.txt` AAB ile birlikte artifact'e konur (Play Console → App bundle explorer → kod gizleme açma dosyası olarak yüklenir).
 - **Donanım özellikleri her zaman isteğe bağlı** (`android:required="false"`: screen.landscape, screen.portrait, touchscreen) — Play'deki "zorunlu donanım özelliği" hatası çıkmasın.
 - Capacitor 8 + `@capacitor-community/admob`, paket `air.CrazyCrescent`, uygulama adı "Crazy Crescent".
 - AAB **sadece elle** üretilir: GitHub → Actions → Android AAB → Run workflow (kullanıcı "tamam" deyince).
