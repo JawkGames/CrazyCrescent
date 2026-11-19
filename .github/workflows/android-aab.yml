@@ -62,12 +62,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           cp android/app/build/outputs/bundle/release/app-release.aab "CrazyCrescent-v${SURUM_AD}.aab"
-          cp android/app/build/outputs/mapping/release/mapping.txt "mapping-v${SURUM_AD}.txt"
-          gh release create "aab-v${SURUM_AD}-${{ github.run_number }}" "CrazyCrescent-v${SURUM_AD}.aab" "mapping-v${SURUM_AD}.txt" --title "Crazy Crescent v${SURUM_AD} AAB (${IMZA})" --notes "Surum kodu ${SURUM_KODU}"
+          gh release create "aab-v${SURUM_AD}-${{ github.run_number }}" "CrazyCrescent-v${SURUM_AD}.aab" --title "Crazy Crescent v${SURUM_AD} AAB (${IMZA})" --notes "Surum kodu ${SURUM_KODU}"
 
       - uses: actions/upload-artifact@v5
         with:
           name: crazy-crescent-aab-${{ env.SURUM_AD }}-${{ env.IMZA }}
-          path: |
-            android/app/build/outputs/bundle/release/app-release.aab
-            android/app/build/outputs/mapping/release/mapping.txt
+          path: android/app/build/outputs/bundle/release/app-release.aab
