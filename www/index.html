@@ -7,7 +7,7 @@
 <style>
 html,body{margin:0;height:100%;overflow:hidden;background:#8fd0fb;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
 canvas{position:fixed;left:0;top:0;width:100%;display:block;touch-action:none}
-#ad{position:fixed;left:0;right:0;bottom:0;height:50px;background:#dff0ff}
+#ad{position:fixed;left:0;right:0;top:0;height:50px;background:#dff0ff}
 </style>
 </head>
 <body>
@@ -47,7 +47,7 @@ const REKLAM=(function(){
       A.addListener('appOpenAdClosed',()=>{acik=false;aYukle();});
       A.addListener('appOpenAdFailedToShow',()=>{acik=false;aYukle();});
       A.addListener('bannerAdSizeChanged',(sz)=>{if(sz&&sz.height>0&&bannerCb)bannerCb(Math.ceil(sz.height));});
-      A.showBanner({adId:ID.banner,adSize:'ADAPTIVE_BANNER',position:'BOTTOM_CENTER',margin:0}).catch(()=>{});
+      A.showBanner({adId:ID.banner,adSize:'BANNER',position:'TOP_CENTER',margin:0}).catch(()=>{});
       gYukle();oYukle();aYukle();
     }catch(e){hazir=false;}
   }
@@ -69,7 +69,7 @@ const REKLAM=(function(){
 (function(){
 const cv=document.getElementById('c'),g=cv.getContext('2d');
 const TAU=Math.PI*2,PI=Math.PI,G=1800,JUMP=720,RUN=260,STEP=1/120;
-const SURUM='v0.7';
+const SURUM='v0.8';
 let ADH=50;
 const FONT='system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
 let W=1,H=1,DPR=1,SC=1,VW=1,VH=1,U=1,SPR=2,T=0;
@@ -84,7 +84,7 @@ function star4(x,y,r,rot){for(let i=0;i<8;i++){const a=rot+i*PI/4,rr=i%2?r*.38:r
 
 function resize(){
   DPR=Math.min(window.devicePixelRatio||1,2);
-  const iw=window.innerWidth||360,ih=Math.max(120,(window.innerHeight||640)-ADH);cv.style.height=ih+'px';
+  const iw=window.innerWidth||360,ih=Math.max(120,(window.innerHeight||640)-ADH);cv.style.height=ih+'px';cv.style.top=ADH+'px';try{document.getElementById('ad').style.height=ADH+'px';}catch(e){}
   W=Math.max(2,Math.round(iw*DPR));H=Math.max(2,Math.round(ih*DPR));cv.width=W;cv.height=H;
   SC=Math.min(W,H)/580;VW=W/SC;VH=H/SC;
   U=clamp(Math.min(iw,ih)/400,.8,1.5)*DPR;
@@ -776,7 +776,7 @@ window.addEventListener('keydown',function(e){
   e.preventDefault();
 });
 window.addEventListener('keyup',function(e){const k=e.key;if(k==='ArrowLeft'||k==='a'||k==='A')key.l=false;else if(k==='ArrowRight'||k==='d'||k==='D')key.r=false;});
-cv.addEventListener('pointerdown',function(e){
+cv.addEventListener('pointerdown',function(e0){const e={clientX:e0.clientX,clientY:e0.clientY-ADH,pointerId:e0.pointerId,pointerType:e0.pointerType,preventDefault(){e0.preventDefault();}};
   e.preventDefault();
   const uc=U/DPR;
   if(!REKLAM.yerli&&Math.hypot(e.clientX-(W/DPR-30*uc),e.clientY-72*uc)<26*uc){toggleFS();return;}

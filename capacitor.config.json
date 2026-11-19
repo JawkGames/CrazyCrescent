@@ -4,6 +4,13 @@
   "webDir": "www",
   "backgroundColor": "#8fd0fb",
   "android": {
-    "backgroundColor": "#8fd0fb"
+    "backgroundColor": "#8fd0fb",
+    "adjustMarginsForEdgeToEdge": "disable"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "disable",
+      "hidden": true
+    }
   }
 }

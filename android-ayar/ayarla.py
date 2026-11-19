@@ -14,6 +14,9 @@ man = 'android/app/src/main/AndroidManifest.xml'
 s = oku(man)
 if 'screenOrientation' not in s:
     s = s.replace('<activity', '<activity\n            android:screenOrientation="sensorLandscape"', 1)
+# Donanim ozellikleri her zaman istege bagli (Play "zorunlu donanim" hatasi olmasin)
+if 'android.hardware.screen.landscape' not in s:
+    s = s.replace('<application', '<uses-feature android:name="android.hardware.screen.landscape" android:required="false" />\n    <uses-feature android:name="android.hardware.screen.portrait" android:required="false" />\n    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />\n\n    <application', 1)
 if 'gms.ads.APPLICATION_ID' not in s:
     s = s.replace('</application>', '    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="@string/admob_app_id" />\n    </application>', 1)
 yaz(man, s)
@@ -70,21 +73,47 @@ for kok,_,dosyalar in os.walk('android/app/src/main/java'):
         paket=re.search(r'package\s+([\w.]+);',oku(ma)).group(1)
         yaz(ma,"""package %s;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.webkit.WebView;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
-    @Override public void onCreate(Bundle b) { super.onCreate(b); tamEkran(); }
+    @Override public void onCreate(Bundle b) {
+        super.onCreate(b);
+        tamEkran();
+        try {
+            WebView w = getBridge().getWebView();
+            ViewCompat.setOnApplyWindowInsetsListener(w, (v, ins) -> { bosluksuz(); return WindowInsetsCompat.CONSUMED; });
+        } catch (Exception e) {}
+    }
+    private void bosluksuz() {
+        try {
+            WebView w = getBridge().getWebView();
+            ViewGroup.LayoutParams p = w.getLayoutParams();
+            if (p instanceof ViewGroup.MarginLayoutParams) { ((ViewGroup.MarginLayoutParams) p).setMargins(0, 0, 0, 0); w.setLayoutParams(p); }
+            w.setPadding(0, 0, 0, 0);
+        } catch (Exception e) {}
+    }
     @Override public void onResume() { super.onResume(); tamEkran(); }
     @Override public void onWindowFocusChanged(boolean odak) { super.onWindowFocusChanged(odak); if (odak) tamEkran(); }
     private void tamEkran() {
+        if (Build.VERSION.SDK_INT >= 28) {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = Build.VERSION.SDK_INT >= 30 ? WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS : WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(lp);
+        }
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         WindowInsetsControllerCompat c = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         c.hide(WindowInsetsCompat.Type.systemBars());
         c.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+        bosluksuz();
     }
 }
 """ % paket)
