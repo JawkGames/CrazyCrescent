@@ -58,6 +58,26 @@ if 'signingConfigs' not in s:
     s = s.replace('buildTypes {', imza.strip('\n') + '\n    buildTypes {', 1)
     s = re.sub(r'(buildTypes\s*\{\s*release\s*\{)', r'\1\n            signingConfig signingConfigs.release', s, 1)
 yaz(gr, s)
+# 3b) Optimizasyon (R8): kod kucultme + kaynak kucultme; Capacitor/AdMob siniflari korunur
+s = re.sub(r'minifyEnabled\s+false', 'minifyEnabled true\n            shrinkResources true', s, 1)
+s = s.replace("getDefaultProguardFile('proguard-android.txt')", "getDefaultProguardFile('proguard-android-optimize.txt')")
+yaz(gr, s)
+pr = 'android/app/proguard-rules.pro'
+kurallar = """
+# --- Capacitor + AdMob (R8 bunlari silmesin) ---
+-keep class com.getcapacitor.** { *; }
+-keep @com.getcapacitor.annotation.CapacitorPlugin public class * { *; }
+-keep class * extends com.getcapacitor.Plugin { *; }
+-keep class com.getcapacitor.community.admob.** { *; }
+-keep class air.CrazyCrescent.** { *; }
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod,JavascriptInterface
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
+-keepclassmembers class * { @com.getcapacitor.PluginMethod public <methods>; }
+-dontwarn com.getcapacitor.**
+"""
+eski = oku(pr) if os.path.exists(pr) else ''
+if 'Capacitor + AdMob' not in eski:
+    yaz(pr, eski + kurallar)
 # 4) Play: minSdk 24 (otomatik koruma), hedef/derleme SDK 36 (en guncel)
 vg = 'android/variables.gradle'
 if os.path.exists(vg):

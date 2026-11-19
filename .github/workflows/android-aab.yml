@@ -58,4 +58,6 @@ jobs:
       - uses: actions/upload-artifact@v5
         with:
           name: crazy-crescent-aab-${{ env.SURUM_AD }}-${{ env.IMZA }}
-          path: android/app/build/outputs/bundle/release/app-release.aab
+          path: |
+            android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/mapping/release/mapping.txt

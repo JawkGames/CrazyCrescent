@@ -96,6 +96,7 @@ Gökkuşağı başta ve sonda bulutun içinden tek noktadan çıkıp açılır.
 ## Android / Play
 - **Bu bir telefon oyunu:** asıl ürün AAB (Google Play) + telefona kurulan APK; tarayıcı sürümü sadece test için.
 - **Tam ekran:** uygulama her zaman saat/pil/gezinme çubuğu gizli, kenarlarda boşluk olmadan tüm ekranı kaplar (MainActivity immersive + çentik modu ALWAYS + WebView kenar boşlukları sıfır; `capacitor.config.json`: `adjustMarginsForEdgeToEdge: disable`, `SystemBars.insetsHandling: disable, hidden: true`).
+- **AAB alırken (her seferinde, söylenmese de):** uygulamada tam ekran butonu olmaz (sadece tarayıcıda görünür); optimizasyon açık: R8 kod küçültme (`minifyEnabled true`) + kaynak küçültme (`shrinkResources true`), Capacitor/AdMob sınıfları `proguard-rules.pro` ile korunur; `mapping.txt` AAB ile birlikte artifact'e konur (Play Console → App bundle explorer → kod gizleme açma dosyası olarak yüklenir).
 - **Donanım özellikleri her zaman isteğe bağlı** (`android:required="false"`: screen.landscape, screen.portrait, touchscreen) — Play'deki "zorunlu donanım özelliği" hatası çıkmasın.
 - Capacitor 8 + `@capacitor-community/admob`, paket `air.CrazyCrescent`, uygulama adı "Crazy Crescent".
 - AAB **sadece elle** üretilir: GitHub → Actions → Android AAB → Run workflow (kullanıcı "tamam" deyince).
